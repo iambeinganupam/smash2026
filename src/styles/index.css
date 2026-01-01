@@ -1,0 +1,137 @@
+:root {
+    --bg-dark: #0f0a1e;
+    --primary-glow: #7b2cbf;
+    --secondary-glow: #3a86ff;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent: #ff006e;
+
+    font-family: 'Inter', sans-serif;
+    color-scheme: dark;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(123, 44, 191, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(58, 134, 255, 0.2) 0%, transparent 40%);
+    animation: gradient-move 20s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-move {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(123, 44, 191, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Specific Component Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fade-in 1s ease-out;
+}
+
+.header h1 {
+    font-size: 4rem;
+    background: linear-gradient(to right, #ff006e, #8338ec);
+    -webkit-background-clip: text;
+    color: transparent;
+    padding-bottom: 0.5rem;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button Styles */
+button {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+}
+
+.neon-btn {
+    background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: filter 0.2s;
+}
+
+.neon-btn:hover {
+    filter: brightness(1.2);
+}
